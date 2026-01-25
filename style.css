@@ -1,0 +1,195 @@
+/* ---------- RESET ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(90deg, #1c52fd, #0edfff);
+    color: #fff;
+
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    max-width: 1500px;
+    width: 90%;
+}
+
+.welcome-div h1 {
+    font-size: 45px
+}
+
+/* ---------- FORM CONTAINER ---------- */
+.form-container {
+    background: #ffffff;
+    color: #222;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h1, .form-container p{ 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container .social-icons {
+    text-align: center;
+
+}
+
+/* ---------- FORM GRID ---------- */
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* ---------- INPUT FIELD ---------- */
+.input-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+/* ---------- INPUT ---------- */
+.inputs {
+    width: 100%;
+    padding: 12px 14px 12px 42px; /* left space for icon */
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.inputs::placeholder {
+    color: #aaa;
+}
+
+/* ---------- ICON INSIDE INPUT ---------- */
+.input-field i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+    transition: color 0.3s;
+}
+
+/* ---------- FOCUS STATE ---------- */
+.input-field:focus-within i {
+    color: #1c52fd;
+}
+
+.inputs:focus {
+    border-color: #1c52fd;
+    box-shadow: 0 0 0 3px rgba(28, 82, 253, 0.15);
+}
+
+/* ---------- FULL WIDTH FIELDS ---------- */
+.password {
+    grid-column: 1 / -1;
+}
+
+/* ---------- SUBMIT BUTTON ---------- */
+.submit-btn {
+    grid-column: 1 / -1;
+    padding: 14px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(90deg, #1c52fd, #0edfff);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.social-icons a {
+    /* padding: 10px; */
+    border: 2px solid #999;
+    padding: 5px;
+    color: #002394;
+}
+
+/* ---------- WELCOME PANEL ---------- */
+.welcome-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+}
+
+.welcome-div h1 {
+    margin-bottom: 10px;
+}
+
+.welcome-div a {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 28px;
+    background: #fff;
+    color: #1c52fd;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.welcome-div a:hover {
+    transform: translateY(-2px);
+}
+
+/* Password Checks */
+.password-checks {
+    display: none;
+}
+
+.check {
+    background: #f44336;
+    margin: 5px 0;
+}
+
+.check-valid {
+    background: #4caf50;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-div {
+        display: none;
+    }
+}
