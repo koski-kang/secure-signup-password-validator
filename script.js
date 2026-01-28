@@ -68,6 +68,8 @@ passwordInput.addEventListener('input', () => {
     const password = passwordInput.value.trim();
     if (password !== '') {
         passwordBarsDiv.style.display = 'block';
+        passwordBarsDiv.classList.add('show');
+
         updateLengthBar(password);
 
         updateBar('uppercase', /[A-Z]/.test(password));
@@ -78,6 +80,7 @@ passwordInput.addEventListener('input', () => {
     }
     else {
         passwordBarsDiv.style.display = 'none';
+        passwordBarsDiv.classList.remove('show');
         Object.keys(rules).forEach(key => rules[key] = false);
         submitBtn.disabled = true;
         submitBtn.classList.remove('enabled');
@@ -111,6 +114,15 @@ function checkAllRules() {
         submitBtn.classList.remove('enabled');
     }
 }
+
+// Toggle password show/hide
+
+const togglePassword = document.getElementById('toggle-password');
+togglePassword.addEventListener('click', () => {
+    togglePassword.classList.toggle('fa-eye-slash');
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type )
+})
 
 
 
