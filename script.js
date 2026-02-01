@@ -87,6 +87,8 @@ passwordInput.addEventListener('input', () => {
     }
 
     checkAllRules()
+    confirmPassword();
+
 })
 
 // Enabling submit btn after all conditions are met
@@ -103,7 +105,7 @@ function checkAllRules() {
 
     // const allValid = checkAllValid(rules)
 
-    const allValid = Object.values(rules).every(rule => rule === true);
+    const allValid = Object.values(rules).every(rule => rule === true)  && confirmPassword();
 
     submitBtn.disabled = !allValid
 
@@ -117,12 +119,43 @@ function checkAllRules() {
 
 // Toggle password show/hide
 
-const togglePassword = document.getElementById('toggle-password');
-togglePassword.addEventListener('click', () => {
-    togglePassword.classList.toggle('fa-eye-slash');
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type )
+const togglePassword = document.querySelectorAll('.toggle-password');
+
+togglePassword.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        toggle.classList.toggle('fa-eye-slash');
+        const wrapper = toggle.closest('.input-field');
+        const input = wrapper.querySelector('.inputs');
+        const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+        input.setAttribute('type', type);
+    })
 })
 
+// Password Match logic
 
+const confirmInput = document.getElementById('confirm-password');
+const matchMsg = document.querySelector('.match-msg');
 
+const confirmPassword = () => {
+    const password = passwordInput.value.trim();
+    const  password2 = confirmInput.value.trim();
+    if (password2 === '') {
+        matchMsg.style.display = 'none';
+        return false;
+    }
+    else if (password === password2) {
+        matchMsg.style.display = 'block';
+        matchMsg.innerHTML = 'Password match ✅';
+        return true;
+    }
+    else {
+        matchMsg.style.display = 'block';
+        matchMsg.innerHTML = 'Password do not match ❌';
+        return false;
+    }
+}
+
+confirmInput.addEventListener('input', () => {
+    confirmPassword();
+    checkAllRules();
+});
