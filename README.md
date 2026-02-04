@@ -23,7 +23,7 @@ A modern signup form with real-time password strength validation and visual feed
 - Vaniulla JavaScript
 
 ## Preview
-![Screenshot](assets/screenshot)
+![Screenshot](assets/screenshot.png)
 
 ## How to Run
 1. Clone  the repository 
